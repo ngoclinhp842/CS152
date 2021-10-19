@@ -68,7 +68,7 @@ def main(argv):
     # end_probDart = float(argv[2])
 
     start_probDart = 0
-    end_probDart = 10
+    end_probDart = 1
 
     ''' assign each parameter from the table above 
     to a variable with an informative name'''
@@ -78,11 +78,11 @@ def main(argv):
     probCalfSurvival = 0.85
     probAdultSurvival = 0.996
     probSeniorSurvival = 0.20
-    capacity = 7000
+    capacity = 8000
     numYears = 200
 
     #calculate step size 
-    step = (end_probDart - start_probDart)/100
+    step = (end_probDart - start_probDart)/10
     # create a list of percent with given start and end points
     percentDarted = np.arange(start_probDart, end_probDart, step)
 
@@ -108,7 +108,8 @@ def main(argv):
         if popSize > 6500 and popSize < 8000:
             opimalPercentDarted.append(percent)
 
-    print('opimal percent', opimalPercentDarted)
+    print('Compare Darted and Population Size', compareDartedPopSize)
+    print('Opimal Percent Darted', opimalPercentDarted)
     #print the opimal percent darted
     # print('The opimal percent Darted possibly from'
     #     ,str(opimalPercentDarted[0][0]),'to',
