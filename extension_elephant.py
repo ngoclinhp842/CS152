@@ -10,12 +10,12 @@ adult males, adults female, seniors, and culled elephants.
 '''
 
 '''How to run: 
-type 'python3 elephant.py <the probability of darting>' 
-in the command line.
-for example: 'python3 elephant.py 0.0'
+type 'python3 elephant.py <the start number of Darted percent>
+<the end number of Darted percent' in the command line.
+for example: 'python3 elephant.py 0 1'
 '''
 
-#import matplotlib.pyplot as plt
+import matplotlib.plot as plt
 '''
 how to install matplotlib:
 For Mac: type 'pip3 install matplotlib'
@@ -29,6 +29,7 @@ import random as rand
 import sys
 import stats
 import numpy as np
+# import elephant
 
 #store index number of every parameter to variables
 IDXCalvingInterval = 0 
@@ -56,19 +57,14 @@ IDXSeniors = 5
 IDXnumCulled = 6
 
 def main(argv):
-    # if len(argv) < 3:
-    #     print('''Please enter the probability of darting 
-    #             in the command line!''')
-    #     return
+    if len(argv) < 3:
+        print('''Please enter the probability of darting in the command line!''')
+        return
 
-    # rand.seed(0)
     
-    # assign the probability of darting from the command line parameter
-    # start_probDart = float(argv[1])
-    # end_probDart = float(argv[2])
-
-    start_probDart = 0
-    end_probDart = 1
+    #assign the probability of darting from the command line parameter
+    start_probDart = float(argv[1])
+    end_probDart = float(argv[2])
 
     ''' assign each parameter from the table above 
     to a variable with an informative name'''
@@ -79,10 +75,11 @@ def main(argv):
     probAdultSurvival = 0.996
     probSeniorSurvival = 0.20
     capacity = 8000
-    numYears = 200
+    numYears = 20
 
     #calculate step size 
-    step = (end_probDart - start_probDart)/10
+    step = (end_probDart - start_probDart)
+    step = step/10
     # create a list of percent with given start and end points
     percentDarted = np.arange(start_probDart, end_probDart, step)
 
@@ -110,29 +107,15 @@ def main(argv):
 
     print('Compare Darted and Population Size', compareDartedPopSize)
     print('Opimal Percent Darted', opimalPercentDarted)
-    #print the opimal percent darted
-    # print('The opimal percent Darted possibly from'
-    #     ,str(opimalPercentDarted[0][0]),'to',
-    #     str(opimalPercentDarted[-1][0]))
 
     #plot the population size with the percent darted
-    # plt.plot(percentDarted,resultsPopSize, ls = 'r-', c = 'blue')
-    # plt.xlabel('Population Size')
-    # plt.ylabel('Percent of Darted elephants')
-    # plt.title('''The Population Size for Percent of Darted elephants
-    #                 from 1 to 100 with a step of 1.''')
-    # plt.show()
+    plt.plot(percentDarted,resultsPopSize, ls = 'r-', c = 'blue')
+    plt.xlabel('Population Size')
+    plt.ylabel('Percent of Darted elephants')
+    plt.title('''The Population Size for Percent of Darted elephants
+                    from 1 to 100 with a step of 1.''')
+    plt.show()
 
-    
-
-    #print out results
-    # print('The avg population size:',str(avg_pop))
-    # print('The avg number of calves:', str(avg_calves))
-    # print('The avg number of Juviniles:',str(avg_juv))
-    # print('The avg number of Adults Male:',str(avg_AdMale))
-    # print('The avg number of Adults Female:', str(avg_AdFemale))
-    # print('The avg number of seniors:', str(avg_seniors))
-    # print('The avg number of elephants Culled:', str(avg_Culled))
     return
 
 # create and return a new elephant
