@@ -15,12 +15,12 @@ type 'python3 elephant.py <the start number of Darted percent>
 for example: 'python3 elephant.py 0 1'
 '''
 
-import matplotlib.plot as plt
+# import matplotlib.plot as plt
 '''
 how to install matplotlib:
 For Mac: type 'pip3 install matplotlib'
 on the terminal
-
+how to upgrade:
 /Library/Frameworks/Python.framework/Versions/3.9/bin/python3.9 -m pip install --upgrade pip
 '''
 
@@ -105,16 +105,16 @@ def main(argv):
         if popSize > 6500 and popSize < 8000:
             opimalPercentDarted.append(percent)
 
-    print('Compare Darted and Population Size', compareDartedPopSize)
-    print('Opimal Percent Darted', opimalPercentDarted)
+    print('''The optimal Percent Darted in range from 0 to 1 with a step size of 0.1 
+    for an initial population of 8000 elephants over 20 year simulations:''', str(opimalPercentDarted))
 
     #plot the population size with the percent darted
-    plt.plot(percentDarted,resultsPopSize, ls = 'r-', c = 'blue')
-    plt.xlabel('Population Size')
-    plt.ylabel('Percent of Darted elephants')
-    plt.title('''The Population Size for Percent of Darted elephants
-                    from 1 to 100 with a step of 1.''')
-    plt.show()
+    # plt.plot(percentDarted,resultsPopSize, ls = 'r-', c = 'blue')
+    # plt.xlabel('Population Size')
+    # plt.ylabel('Percent of Darted elephants')
+    # plt.title('''The Population Size for Percent of Darted elephants
+    #                 from 1 to 100 with a step of 1.''')
+    # plt.show()
 
     return
 
